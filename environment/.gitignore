@@ -1,0 +1,4 @@
+.direnv
+.platformio
+.vscode
+flake.lock
