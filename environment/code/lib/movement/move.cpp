@@ -60,3 +60,14 @@ void rotateRight(int power) {
     analogWrite(RIGHT_PWM, power);
     goRight();
 }
+
+void flip(int power) {
+    analogWrite(LEFT_PWM, power);
+    analogWrite(RIGHT_PWM, power);
+    stop();
+    delay(100);
+    rotateRight(power);
+    delay(850);
+    stop();
+    delay(100);
+}

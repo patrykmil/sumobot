@@ -13,3 +13,4 @@ void chargeForward(int power = 255);
 void chargeBack(int power = 255);
 void rotateLeft(int power = 80);
 void rotateRight(int power = 80);
+void flip(int power = 255);
