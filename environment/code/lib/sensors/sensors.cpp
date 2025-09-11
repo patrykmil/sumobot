@@ -9,7 +9,7 @@ float getDistanceFront() {
     delayMicroseconds(10);
     digitalWrite(DIST_FRONT_TRIG, LOW);
 
-    echoTime = pulseIn(DIST_FRONT_ECHO, HIGH, 30000);
+    echoTime = pulseIn(DIST_FRONT_ECHO, HIGH);
 
     if (echoTime == 0) {
         return 999;
@@ -32,7 +32,7 @@ float getDistanceBack() {
     delayMicroseconds(10);
     digitalWrite(DIST_BACK_TRIG, LOW);
 
-    echoTime = pulseIn(DIST_BACK_ECHO, HIGH, 30000);
+    echoTime = pulseIn(DIST_BACK_ECHO, HIGH);
 
     if (echoTime == 0) {
         return 999;

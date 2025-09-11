@@ -78,36 +78,34 @@ void setup() {
     analogWrite(LEFT_PWM, config.normalSpeed);
     analogWrite(RIGHT_PWM, config.normalSpeed);
 
-    // delay(5000);
+    delay(5000);
 
-    // currentState = SCANNING;
-    // stateStartTime = millis();
+    currentState = SCANNING;
+    stateStartTime = millis();
 
-    // Serial.begin(9600);
+    Serial.begin(9600);
 }
 
 void loop() {
-    delay(3000);
-    flip();
-    // if (isOnLine() && currentState != RETREATING) {
-    //     currentState = RETREATING;
-    //     stateStartTime = millis();
-    // }
+    if (isOnLine() && currentState != RETREATING) {
+        currentState = RETREATING;
+        stateStartTime = millis();
+    }
 
-    // switch (currentState) {
-    //     case SCANNING:
-    //         scan();
-    //         break;
+    switch (currentState) {
+        case SCANNING:
+            scan();
+            break;
 
-    //     case ATTACKING:
-    //         attack();
-    //         break;
+        case ATTACKING:
+            attack();
+            break;
 
-    //     case RETREATING:
-    //         retreat();
-    //         break;
-    // }
-    // debug();
+        case RETREATING:
+            retreat();
+            break;
+    }
+    debug();
 
-    // delay(50);
+    delay(50);
 }

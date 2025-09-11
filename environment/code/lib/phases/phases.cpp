@@ -35,7 +35,8 @@ void attack() {
     if (DIRECTION > 0) {
         goForward();
     } else {
-        goBack();
+        flip();
+        goForward();
     }
 
     float enemyDist = getClosestEnemyDistance();
