@@ -4,6 +4,8 @@
 #include <phases.h>
 #include <sensors.h>
 
+#define BACK_LINE_SENSOR 0
+
 SumoConfig config;
 SumoState currentState;
 unsigned long stateStartTime = 0;
@@ -45,8 +47,10 @@ void debug() {
     Serial.print(getEnemyDirection());
     Serial.print("\nLine front: ");
     Serial.print(isLineFront() ? "Yes" : "No");
-    // Serial.print("\nLine back: ");
-    // Serial.print(isLineBack() ? "Yes" : "No");
+#if BACK_LINE_SENSOR
+    Serial.print("\nLine back: ");
+    Serial.print(isLineBack() ? "Yes" : "No");
+#endif
     Serial.print("\n\n-------------------");
     delay(1000);
 }
