@@ -4,7 +4,9 @@
 #include <phases.h>
 #include <sensors.h>
 
+#define FRONT_LINE_SENSOR 0
 #define BACK_LINE_SENSOR 0
+#define DEBUG 0
 
 SumoConfig config;
 SumoState currentState;
@@ -45,8 +47,10 @@ void debug() {
     Serial.print(getClosestEnemyDistance());
     Serial.print("\nDirection: ");
     Serial.print(getEnemyDirection());
+#if FRONT_LINE_SENSOR
     Serial.print("\nLine front: ");
     Serial.print(isLineFront() ? "Yes" : "No");
+#endif
 #if BACK_LINE_SENSOR
     Serial.print("\nLine back: ");
     Serial.print(isLineBack() ? "Yes" : "No");
@@ -78,12 +82,13 @@ void setup() {
     analogWrite(LEFT_PWM, config.normalSpeed);
     analogWrite(RIGHT_PWM, config.normalSpeed);
 
-    delay(5000);
-
-    currentState = SCANNING;
-    stateStartTime = millis();
-
+#if DEBUG
     Serial.begin(9600);
+    Serial.println("Sumo Robot Initialized");
+    Serial.println("-------------------");
+#endif
+
+    delay(5000);
 }
 
 void loop() {
@@ -105,7 +110,10 @@ void loop() {
             retreat();
             break;
     }
+
+#if DEBUG
     debug();
+#endif
 
     delay(50);
 }

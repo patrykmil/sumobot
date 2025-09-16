@@ -91,9 +91,10 @@ bool isLineBack() {
 }
 
 bool isOnLine() {
-#if BACK_LINE_SENSOR
+#if BACK_LINE_SENSOR && FRONT_LINE_SENSOR
     return isLineFront() || isLineBack();
-#else
+#elif FRONT_LINE_SENSOR
     return isLineFront();
 #endif
+    return false;
 }
