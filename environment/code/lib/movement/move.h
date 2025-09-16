@@ -9,8 +9,8 @@ void goLeft();
 void goRight();
 void stop();
 
-void chargeForward(int power = 255);
-void chargeBack(int power = 255);
-void rotateLeft(int power = 80);
-void rotateRight(int power = 80);
-void flip(int power = 255);
+void chargeForward(int power);
+void chargeBack(int power);
+void rotateLeft(int power);
+void rotateRight(int power);
+void flip(int power);

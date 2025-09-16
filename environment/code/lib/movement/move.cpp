@@ -38,30 +38,45 @@ void stop() {
 }
 
 void chargeForward(int power) {
+    if (power < 0) {
+        power = config.attackSpeed;
+    }
     analogWrite(LEFT_PWM, power);
     analogWrite(RIGHT_PWM, power);
     goForward();
 }
 
 void chargeBack(int power) {
+    if (power < 0) {
+        power = config.attackSpeed;
+    }
     analogWrite(LEFT_PWM, power);
     analogWrite(RIGHT_PWM, power);
     goBack();
 }
 
 void rotateLeft(int power) {
+    if (power < 0) {
+        power = config.scanSpeed;
+    }
     analogWrite(LEFT_PWM, power);
     analogWrite(RIGHT_PWM, power);
     goLeft();
 }
 
 void rotateRight(int power) {
+    if (power < 0) {
+        power = config.scanSpeed;
+    }
     analogWrite(LEFT_PWM, power);
     analogWrite(RIGHT_PWM, power);
     goRight();
 }
 
 void flip(int power) {
+    if (power < 0) {
+        power = config.flipSpeed;
+    }
     analogWrite(LEFT_PWM, power);
     analogWrite(RIGHT_PWM, power);
     stop();

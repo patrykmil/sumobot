@@ -60,7 +60,7 @@ void debug() {
 }
 
 void setup() {
-    SPEED = config.normalSpeed;
+    SPEED = config.scanSpeed;
     LINE_COLOR = config.lineColor;
     SCAN_DISTANCE = config.enemyDetectionDistance;
 
@@ -79,8 +79,8 @@ void setup() {
     pinMode(DIST_BACK_TRIG, OUTPUT);
     pinMode(DIST_BACK_ECHO, INPUT);
 
-    analogWrite(LEFT_PWM, config.normalSpeed);
-    analogWrite(RIGHT_PWM, config.normalSpeed);
+    analogWrite(LEFT_PWM, config.scanSpeed);
+    analogWrite(RIGHT_PWM, config.scanSpeed);
 
 #if DEBUG
     Serial.begin(9600);

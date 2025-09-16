@@ -1,9 +1,9 @@
 #pragma once
 
 struct SumoConfig {
-    int normalSpeed = 120;
+    int scanSpeed = 80;
     int attackSpeed = 255;
-    int scanSpeed = 60;
+    int flipSpeed = 200;
     int lineColor = 1;  // 0 for white line, 1 for black line
     int enemyDetectionDistance = 25;
     int closeEnemyDistance = 10;

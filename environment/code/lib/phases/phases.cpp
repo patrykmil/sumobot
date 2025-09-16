@@ -35,7 +35,7 @@ void attack() {
     if (DIRECTION > 0) {
         goForward();
     } else {
-        flip();
+        flip(-1);
         goForward();
     }
 
