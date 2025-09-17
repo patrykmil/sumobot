@@ -4,10 +4,6 @@
 #include <phases.h>
 #include <sensors.h>
 
-#define FRONT_LINE_SENSOR 0
-#define BACK_LINE_SENSOR 0
-#define DEBUG 0
-
 SumoConfig config;
 SumoState currentState;
 unsigned long stateStartTime = 0;

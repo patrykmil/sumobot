@@ -1,4 +1,7 @@
 #pragma once
+#define FRONT_LINE_SENSOR 0
+#define BACK_LINE_SENSOR 0
+#define DEBUG 0
 
 struct SumoConfig {
     int scanSpeed = 80;

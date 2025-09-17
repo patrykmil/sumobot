@@ -1,3 +1,16 @@
+### Config:
+
+Konfiguracja znajduje się w pliku config.h
+Ważne parametry:
+#define FRONT_LINE_SENSOR 0
+#define BACK_LINE_SENSOR 0
+należy ustawić 1 lub 0 w zależności od tego czy dany czujnik jest podłączony
+
+int lineColor = 1;
+ustawia kolor linii (1 - czarna, 0 - biała)
+
+Przypisanie pinów znajduje się w pliku main.cpp:
+
 ### Platformio:
 
 Build
