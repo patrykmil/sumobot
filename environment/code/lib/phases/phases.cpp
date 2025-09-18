@@ -22,6 +22,9 @@ void scan() {
     }
 
     if (millis() - stateStartTime > config.scanTimeout) {
+        goForward();
+        delay(500);
+        stop();
         DIRECTION *= -1;
         stateStartTime = millis();
     }
@@ -32,10 +35,11 @@ void attack() {
     analogWrite(LEFT_PWM, SPEED);
     analogWrite(RIGHT_PWM, SPEED);
 
-    if (DIRECTION > 0) {
+    if (DIRECTION == 1) {
         goForward();
-    } else {
+    } else if (DIRECTION == -1) {
         flip(-1);
+        DIRECTION = 1;
         goForward();
     }
 
@@ -48,7 +52,7 @@ void attack() {
 }
 
 void retreat() {
-    SPEED = config.attackSpeed;
+    SPEED = config.scanSpeed;
     analogWrite(LEFT_PWM, SPEED);
     analogWrite(RIGHT_PWM, SPEED);
 
@@ -60,10 +64,5 @@ void retreat() {
         currentState = SCANNING;
         stateStartTime = millis();
         return;
-    }
-
-    if (millis() - stateStartTime > config.retreatDelay) {
-        currentState = SCANNING;
-        stateStartTime = millis();
     }
 }

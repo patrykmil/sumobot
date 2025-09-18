@@ -1,17 +1,15 @@
 #pragma once
-#define FRONT_LINE_SENSOR 1
+#define FRONT_LINE_SENSOR 0
 #define BACK_LINE_SENSOR 0
-#define DEBUG 0
+#define DEBUG 1
 
 struct SumoConfig {
     int scanSpeed = 80;
-    int attackSpeed = 255;
-    int flipSpeed = 200;
+    int attackSpeed = 200;
+    int flipSpeed = 180;
     int lineColor = 1;  // 0 for white line, 1 for black line
-    int enemyDetectionDistance = 25;
-    int closeEnemyDistance = 10;
-    unsigned long scanTimeout = 3000;
-    unsigned long retreatDelay = 300;
+    int enemyDetectionDistance = 40;
+    int scanTimeout = 3000;
 };
 
 enum SumoState {

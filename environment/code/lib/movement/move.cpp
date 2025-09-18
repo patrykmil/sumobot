@@ -37,43 +37,8 @@ void stop() {
     digitalWrite(RIGHT_IN2, LOW);
 }
 
-void chargeForward(int power) {
-    if (power < 0) {
-        power = config.attackSpeed;
-    }
-    analogWrite(LEFT_PWM, power);
-    analogWrite(RIGHT_PWM, power);
-    goForward();
-}
-
-void chargeBack(int power) {
-    if (power < 0) {
-        power = config.attackSpeed;
-    }
-    analogWrite(LEFT_PWM, power);
-    analogWrite(RIGHT_PWM, power);
-    goBack();
-}
-
-void rotateLeft(int power) {
-    if (power < 0) {
-        power = config.scanSpeed;
-    }
-    analogWrite(LEFT_PWM, power);
-    analogWrite(RIGHT_PWM, power);
-    goLeft();
-}
-
-void rotateRight(int power) {
-    if (power < 0) {
-        power = config.scanSpeed;
-    }
-    analogWrite(LEFT_PWM, power);
-    analogWrite(RIGHT_PWM, power);
-    goRight();
-}
-
 void flip(int power) {
+    int flipStartTime = millis();
     if (power < 0) {
         power = config.flipSpeed;
     }
@@ -81,8 +46,9 @@ void flip(int power) {
     analogWrite(RIGHT_PWM, power);
     stop();
     delay(100);
-    rotateRight(power);
-    delay(850);
-    stop();
+    goRight();
+    while(getEnemyDirection() == 1 || millis() - flipStartTime > 2000) {
+        delay(50);
+    }
     delay(100);
 }
