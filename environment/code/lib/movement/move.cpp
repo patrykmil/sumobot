@@ -38,7 +38,7 @@ void stop() {
 }
 
 void flip(int power) {
-    int flipStartTime = millis();
+    unsigned long flipStartTime = millis();
     if (power < 0) {
         power = config.flipSpeed;
     }
@@ -47,7 +47,7 @@ void flip(int power) {
     stop();
     delay(100);
     goRight();
-    while(getEnemyDirection() == 1 || millis() - flipStartTime > 2000) {
+    while(getDistanceFront() > config.enemyDetectionDistance && millis() - flipStartTime < 2000) {
         delay(50);
     }
     delay(100);

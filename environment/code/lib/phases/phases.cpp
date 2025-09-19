@@ -14,8 +14,8 @@ void scan() {
         goLeft();
     }
 
-    if (isEnemyDetected()) {
-        DIRECTION = getEnemyDirection();
+    DIRECTION = getEnemyDirection();
+    if (DIRECTION != 0) {
         currentState = ATTACKING;
         stateStartTime = millis();
         return;
@@ -43,7 +43,7 @@ void attack() {
         goForward();
     }
 
-    float enemyDist = getClosestEnemyDistance();
+    float enemyDist = getDistanceFront();
 
     if (enemyDist > config.enemyDetectionDistance) {
         currentState = SCANNING;
