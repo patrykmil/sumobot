@@ -46,7 +46,7 @@ pio run --target upload --target monitor
 | 3x8     | 4     | 1,4                   |
 | 2.5x6   | 4     | 4,arduino uno         |
 | 2x16    | 3     | 2,3                   |
-| 3x25    | 4     | 1,motor               |
+| 3x30    | 4     | 1,motor               |
 | 4x12    | 2     | 1,tylnie kółko        |
 | 2x12    | 2-4   | 1,line finder         |
 | 4x10    | 2     | 1,5                   |
