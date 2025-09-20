@@ -8,25 +8,40 @@ void scan() {
     analogWrite(LEFT_PWM, SPEED);
     analogWrite(RIGHT_PWM, SPEED);
 
-    if (DIRECTION > 0) {
-        goRight();
-    } else {
-        goLeft();
-    }
+    while (true) {
+#if (DEBUG)
+        Serial.println(getDistanceFront());
+#endif
 
-    DIRECTION = getEnemyDirection();
-    if (DIRECTION != 0) {
-        currentState = ATTACKING;
-        stateStartTime = millis();
-        return;
-    }
+        if (DIRECTION > 0) {
+            goRight();
+        } else {
+            goLeft();
+        }
 
-    if (millis() - stateStartTime > config.scanTimeout) {
-        goForward();
-        delay(500);
-        stop();
-        DIRECTION *= -1;
-        stateStartTime = millis();
+        DIRECTION = getEnemyDirection();
+        if (DIRECTION != 0) {
+            currentState = ATTACKING;
+            stateStartTime = millis();
+            return;
+        }
+
+        if (millis() - stateStartTime > config.scanTimeout) {
+            goForward();
+            delay(500);
+            stop();
+            DIRECTION *= -1;
+            stateStartTime = millis();
+        }
+
+        bool isLine = isOnLine();
+        if (isLine) {
+            currentState = RETREATING;
+            stateStartTime = millis();
+            return;
+        }
+
+        delay(20);
     }
 }
 
@@ -43,11 +58,27 @@ void attack() {
         goForward();
     }
 
-    float enemyDist = getDistanceFront();
+    while (true) {
+        float enemyDist = getDistanceFront();
+        bool isLine = isOnLine();
+#if (DEBUG)
+        Serial.println(enemyDist);
+        Serial.println(isLineFront());
+#endif
 
-    if (enemyDist > config.enemyDetectionDistance) {
-        currentState = SCANNING;
-        stateStartTime = millis();
+        if (isLine) {
+            currentState = RETREATING;
+            stateStartTime = millis();
+            return;
+        }
+
+        if (enemyDist > config.enemyDetectionDistance) {
+            currentState = SCANNING;
+            stateStartTime = millis();
+            return;
+        }
+
+        delay(200);
     }
 }
 

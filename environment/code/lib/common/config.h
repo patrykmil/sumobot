@@ -5,7 +5,7 @@
 
 struct SumoConfig {
     int scanSpeed = 80;
-    int attackSpeed = 255;
+    int attackSpeed = 220;
     int flipSpeed = 200;
     int lineColor = 1;  // 0 for white line, 1 for black line
     int enemyDetectionDistance = 40;

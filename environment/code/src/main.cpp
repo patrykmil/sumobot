@@ -79,6 +79,7 @@ void setup() {
     analogWrite(RIGHT_PWM, config.scanSpeed);
 
 #if DEBUG
+    Serial.begin(9600);
     Serial.println("Sumo Robot Initialized");
     Serial.println("-------------------");
 #endif
@@ -110,5 +111,5 @@ void loop() {
     debug();
 #endif
 
-    delay(50);
+    // delay(20);
 }
