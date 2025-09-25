@@ -9,10 +9,6 @@ void scan() {
     analogWrite(RIGHT_PWM, SPEED);
 
     while (true) {
-#if (DEBUG)
-        Serial.println(getDistanceFront());
-#endif
-
         if (DIRECTION > 0) {
             goRight();
         } else {
@@ -61,10 +57,6 @@ void attack() {
     while (true) {
         float enemyDist = getDistanceFront();
         bool isLine = isOnLine();
-#if (DEBUG)
-        Serial.println(enemyDist);
-        Serial.println(isLineFront());
-#endif
 
         if (isLine) {
             currentState = RETREATING;
